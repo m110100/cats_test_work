@@ -4,6 +4,6 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
 	plugins: [react(), tsconfigPaths()],
-	base: '/cats_test/',
+	base: '/cats_test_work/',
 });
 

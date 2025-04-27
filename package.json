@@ -1,9 +1,9 @@
 {
-  "name": "cats_test",
+  "name": "cats_test_work",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://m110100.github.io/cats_test",
+  "homepage": "https://m110100.github.io/cats_test_work",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
