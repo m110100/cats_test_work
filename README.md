@@ -1,54 +1,111 @@
-# React + TypeScript + Vite
+# Cats Test
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React-приложение, отображающее случайные изображения котов с использованием [The Cat API](https://thecatapi.com/). Приложение позволяет включать/отключать загрузку изображений + поддерживает автоматическое получение каждые 5 секунд (по выбору).
 
-Currently, two official plugins are available:
+## Структура проекта
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+├── app/              # Точка входа приложения и глобальные стили
+├── entities/         # Бизнес-сущности с их моделями и API
+│   └── cat/          # Код, связанный с сущностью кота
+├── lib/              # Общие библиотеки и UI-компоненты
+│   └── ui/           # UI-компоненты и хуки
+├── pages/            # Компоненты страниц
+│   └── home/         # Главная страница приложения
+├── shared/           # Общие утилиты
+│   └── api/          # Конфигурация API-клиента
+└── widgets/          # Сложные UI-компоненты, объединяющие несколько элементов UI
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Основные директории:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **app**: Содержит лобальные стили и точку входа в приложение.
+- **entities**: Содержит бизнес-сущности с их API-интерфейсами и моделями данных.
+- **lib**: Содержит переиспользуемые UI-компоненты и утилитарные хуки.
+- **pages**: Содержит компоненты страниц.
+- **shared**: Содержит общие утилиты.
+- **widgets**: Содержит переиспользуемые виджеты приложения.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## Технологический стек
+
+- React 19
+- TypeScript
+- Vite
+- Styled Components
+- TanStack Query (React Query)
+- Axios
+- ESLint & Prettier
+
+## Настройка и установка
+
+### Предварительные требования
+
+- Node.js (рекомендуется версия 18 или выше)
+- Пакетный менеджер pnpm
+
+### Шаги установки
+
+1. Клонировать репозиторий:
+```bash
+git clone <URL-репозитория>
+cd cats_test
 ```
+
+2. Установить зависимости:
+```bash
+pnpm install
+```
+
+3. Создать файл `.env` в корневой директории с учетными данными Cat API:
+```
+VITE_API_URL=https://api.thecatapi.com/v1/
+VITE_API_KEY=ваш_API_ключ_здесь
+```
+
+## Запуск приложения
+
+### Режим разработки
+
+Для запуска сервера разработки:
+
+```bash
+pnpm dev
+```
+
+Это запустит приложение в режиме разработки. Откройте [http://localhost:5173](http://localhost:5173) для просмотра в браузере.
+
+### Сборка для продакшена
+
+Для сборки приложения для продакшена:
+
+```bash
+pnpm build
+```
+
+Это создаст оптимизированную сборку в папке `dist`.
+
+### Предварительный просмотр продакшен-сборки
+
+Для предварительного просмотра продакшен-сборки локально:
+
+```bash
+pnpm preview
+```
+
+## Деплой
+
+Приложение настроено на деплой в GitHub Pages:
+
+```bash
+pnpm deploy
+```
+
+Это соберет приложение и опубликует его на GitHub Pages.
+
+## Скрипты проекта
+
+- `pnpm dev`: Запуск сервера разработки
+- `pnpm build`: Сборка приложения для продакшена
+- `pnpm lint`: Запуск ESLint для проверки проблем в коде
+- `pnpm preview`: Предварительный просмотр продакшен-сборки локально
+- `pnpm deploy`: Деплой приложения на GitHub Pages
