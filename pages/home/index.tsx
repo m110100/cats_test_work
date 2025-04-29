@@ -70,7 +70,7 @@ export const HomePage = () => {
 						<span
 							onClick={() => {
 								if (!isError) setIsFetchingEnabled(true);
-								if (isError) refetch();
+								else refetch();
 							}}
 						>
 							{isError ? 'Retry' : 'Toggle'}
